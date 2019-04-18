@@ -11,7 +11,7 @@ int main() {
 	int y = 1; //Initialize ouput variable y
 	for (int z = 1; z <= x; ++z) //Loop from lowest value of z to x
 		{
-		y = y*z;
+		y*=z;
 		}
 	std::cout << "The factorial of " << x << " is " << y << '\n';
 }
