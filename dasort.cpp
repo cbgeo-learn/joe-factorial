@@ -1,14 +1,5 @@
 #include <iostream>
-#include <algorithm>
 #include <vector>
-
-int defnext(int cid, int alength)
-{
-	if (cid+2>alength)
-		return alength-1;
-	else
-		return cid+2;
-}
 
 bool chkchange(int previter, int curiter, int changefound)
 {
@@ -21,10 +12,20 @@ bool chkchange(int previter, int curiter, int changefound)
 void printarray( int alength, std::vector<int> array)
 {
 	for (int pid=0; pid<alength; ++pid)
-		std::cout << array[pid] << " ";
+		std::cout << array.at(pid) << " ";
 	std::cout<<"\n";
 } 
 
+std::vector<int> swap( std::vector<int> array, int cid)
+{
+	if (array.at(cid)>array.at(cid+1))
+	{
+		int temp = array.at(cid);		
+		array.at(cid) = array.at(cid+1);
+		array.at(cid+1) = temp;
+	}
+	return array;
+}
 
 int  main()
 {
@@ -33,68 +34,57 @@ int  main()
 	int arraylength;
 	std::cin >> arraylength;	
 
-	//Generate two dynamic arrays of that length, one to keep and one to sort
-	//int *rawarray = new int[arraylength];
-	//int *sortarray = new int[arraylength];
-	
-	// Generate two standard vector types
+	//Generate two standard vectors of that length, one to keep and one to sort
 	std::vector<int> rawarray;
 	std::vector<int> sortarray;
 
-	// Resize these standard vectors to be right size, without this segmentation fault
-	rawarray.resize(arraylength);
-	sortarray.resize(arraylength);	
+	// Reserve these standard vectors to be right size
+	rawarray.reserve(arraylength);
+	sortarray.reserve(arraylength);	
 	
 	//Loop through the array and ask for inputs
+	int myval;
 	for (int id=0; id<arraylength; ++id)
 	{
 		std::cout<< "Please enter the values of "<< id << " member of the array: ";
-		std::cin >> rawarray[id];
-		sortarray[id]=rawarray[id];
+		
+		std::cin >> myval;
+		rawarray.push_back(myval);
+		sortarray.push_back(myval);
 	}
 
 	//Sort the one array using a bubble sort
 	int cval;
-	bool changefound=true;
+	bool changefound;
 
-	//Outer loop for repeated passes
-	while (changefound)
+	//Outer loop for repeated passes, at most N-1 required swaps
+	for (int trial=1; trial<arraylength; ++trial)
 	{
 		//Set null hypothesis
 		changefound=false;
 
-		//Inner loop performs single pass
-		int prev=sortarray[0];
-		int next=sortarray[1];
-		for (int cid=0; cid<arraylength-1; ++cid)
+		//Inner loop performs single pass, at most arraylength - trial swaps
+		for (int cid=0; cid<arraylength-trial; ++cid)
 		{
 			//Get current (soon to be previous) value for comparison later
-			cval = sortarray[cid];			
+			cval = sortarray.at(cid);			
 	
-			//Determine minimum and assign
-			sortarray[cid]=std::min(prev, next);
+			// Use swap
+			sortarray = swap(sortarray,cid);
 	
-			//Set new prev to maximum
-			prev = std::max(prev, next);
-
-			//Set new next value, check to be sure dont go beyond array
-			next = sortarray[defnext(cid, arraylength)];
-
 			//Determine if need to repeat sort
-			changefound = chkchange(cval,sortarray[cid],changefound);
+			changefound = chkchange(cval,sortarray.at(cid),changefound);
 		}	
-		sortarray[arraylength-1] = prev;
+		// Allow to break early if no swaps were made (i.e. changefound = FALSE)
+		if (!changefound)
+			break;
 	}
-
+	
 	// Print sorted unsorted array:
-	std::cout<<" The unsorted array is: ";
+	std::cout<<"The unsorted array is: ";
 	printarray(arraylength, rawarray);
 	
 	// Print sorted array:
 	std::cout<<"The sorted array is: ";
 	printarray(arraylength, sortarray);
-	
-	// Delete array off heap:
-	//delete[] rawarray;
-	//delete[] sortarray;
 }
