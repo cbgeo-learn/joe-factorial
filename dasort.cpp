@@ -16,7 +16,7 @@ void printarray( int alength, std::vector<int> array)
 	std::cout<<"\n";
 } 
 
-std::vector<int> swap( std::vector<int> array, int cid)
+void swap( std::vector<int> &array, int &cid)
 {
 	if (array.at(cid)>array.at(cid+1))
 	{
@@ -24,7 +24,6 @@ std::vector<int> swap( std::vector<int> array, int cid)
 		array.at(cid) = array.at(cid+1);
 		array.at(cid+1) = temp;
 	}
-	return array;
 }
 
 int  main()
@@ -70,7 +69,7 @@ int  main()
 			cval = sortarray.at(cid);			
 	
 			// Use swap
-			sortarray = swap(sortarray,cid);
+			swap(sortarray,cid);
 	
 			//Determine if need to repeat sort
 			changefound = chkchange(cval,sortarray.at(cid),changefound);
