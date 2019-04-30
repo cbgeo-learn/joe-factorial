@@ -3,54 +3,47 @@
 class Matrix
 {
 public:
-	// Constructor, call init to make 2D array and set to set it.
-	Matrix(int numrows, int numcols)
+	// Constructor, initialize array of zeros.
+	Matrix(int rows, int cols)
 	{
-		rows = numrows;
-		cols = numcols;
-		set(init(rows, cols));
-	}
-
-	// Make 2D array given rows and cols, and initialize to optional arg value.
-	int** init( int numrows, int numcols, int value=0)
-	{	
-		int **temp;
-                temp = new int*[rows];
-                for (int rid=0; rid<rows; ++rid)
+		rows_ = rows;
+		cols_ = cols;
+		
+                vals_ = new int*[rows];
+                for (int rid=0; rid<rows_; ++rid)
                 {
-                        temp[rid] = new int[cols];
-                        for (int cid=0; cid<cols; ++cid)
-                                temp[rid][cid] = value;
+                        vals_[rid] = new int[cols_];
+                        for (int cid=0; cid<cols_; ++cid)
+                                vals_[rid][cid] = 0;
                 }
-		return temp;
 	}	
 	
 	// Allow user defined set, where will loop through values of matrix
-	void setusr()
+	void setbyusr()
 	{
-		for (int rid=0; rid<rows; ++rid)
+		for (int rid=0; rid<rows_; ++rid)
 		{
-			for (int cid=0; cid<cols; ++cid)
+			for (int cid=0; cid<cols_; ++cid)
 			{
 			std::cout<<"Enter entry ["<<rid<<","<<cid<<"]: ";
-			std::cin>>vals[rid][cid];
+			std::cin>>vals_[rid][cid];
 			}
 		}				
 	}
 
-	void set(int** valstoset) {vals=valstoset;}
+	//void set(int** valstoset) {vals=valstoset;}
 
-	int getrows() {return rows;}
+	int getrows() const {return rows_;}
 
-	int getcols() {return cols;}
+	int getcols() const {return cols_;}
 
 	// Print matrix for visualization	
 	void print()
 	{
-		for (int rid=0; rid<rows; ++rid)
+		for (int rid=0; rid<rows_; ++rid)
 		{
-			for (int cid=0; cid<cols; ++cid)
-                     	std::cout<<vals[rid][cid]<<" ";
+			for (int cid=0; cid<cols_; ++cid)
+                     	std::cout<<vals_[rid][cid]<<" ";
 		std::cout<<"\n";
 		}
 	}
@@ -58,81 +51,97 @@ public:
 	// Destructor to handle dynamic array
 	~Matrix()
 	{
-		for (int rid=0; rid<rows; ++rid)
-			delete[] vals[rid];
-		delete[] vals;
+		for (int rid=0; rid<rows_; ++rid)
+			delete[] vals_[rid];
+		delete[] vals_;
 	}
 
 	// Overload + opperator so that Matrix A + Matrix B will return vals for a Matrix C
-	int** operator + (Matrix &B)
+	Matrix operator + (const Matrix &B)
 	{
-		int** temp;
-		temp=init(rows,cols);
+		Matrix temp{rows_, cols_}; //Set it to size of A aribrarily
 
-		if ((rows==B.getrows()) && (cols==B.getcols())) //If A and B are same size
+		if ((rows_==B.getrows()) && (cols_==B.getcols())) //If A and B are same size
 		{
-                	for (int rid=0; rid<rows; ++rid)
+                	for (int rid=0; rid<rows_; ++rid)
 			{
-                        	for (int cid=0; cid<cols; ++cid)
-					temp[rid][cid] = vals[rid][cid] + B.vals[rid][cid];
+                        	for (int cid=0; cid<cols_; ++cid)
+					temp.vals_[rid][cid] = vals_[rid][cid] + B.vals_[rid][cid];
 			}
 		}
 		else //If A and B are different sizes
-			std::cout<<"Operation not allowed rows and cols must match";
+			std::cout<<"Operation not allowed rows and cols must match.\n";
 		return temp;
 	}	
 
 	// Overload * operator so that Matrix A * Matrix B will return vals for a Matrix C
-	int** operator * (Matrix &B)
+	Matrix operator * (const Matrix &B)
 	{
-		int **temp;
-		temp=init(rows,B.getcols());
+		Matrix temp{rows_,B.getcols()};
 
-		if (cols==B.getrows())
+		if (cols_==B.getrows())
 		{
-		for (int rid=0; rid<rows; ++rid)
+		for (int rid=0; rid<rows_; ++rid)
 		{
-			for (int cid=0; cid<cols; ++cid)
+			for (int cid=0; cid<cols_; ++cid)
 			{
-				for (int dloc=0; dloc<cols; ++dloc)
-					temp[rid][cid]+=vals[rid][dloc] * B.vals[dloc][cid];
+				for (int dloc=0; dloc<cols_; ++dloc)
+					temp.vals_[rid][cid]+=vals_[rid][dloc] * B.vals_[dloc][cid];
 			}
 		}
 		}
 		else
-			std::cout<<"Operation not allowed cols of A == rows of B";		
+			std::cout<<"Operation not allowed cols of A == rows of B.\n";		
 		return temp;
 	}
 
-
 private:
-	int rows;
-        int cols;
-        int **vals;
+	int rows_;
+        int cols_;
+        int **vals_;
 
 };
 
 int main()
 {
 	// Initialize A
-	Matrix A {2,2};
-	A.setusr();
+	std::cout<<"Rows of A: ";
+	int arows;
+	std::cin>>arows;
+	
+	std::cout<<"Columns of A: ";
+	int acols;
+	std::cin>>acols;
+
+	Matrix A {arows,acols};
+	A.setbyusr();
 	A.print();
 
 	// Initialize B
-	Matrix B {2,2};
-	B.setusr();
+	std::cout<<"Rows of B: ";
+	int brows;
+	std::cin>>brows;
+	
+	std::cout<<"Columns of B: ";
+	int bcols;
+	std::cin>>bcols;
+	
+	Matrix B {brows,bcols};
+	B.setbyusr();
 	B.print();
 
 	// Overload + operator	
-	Matrix C {2,2};
-	C.set(A + B);
+	
+	// Doesnt work
+	//Matrix C{2,2};
+	//C=A+B;	
+	//C.print();
+	
+	// Does work
+	Matrix C=A+B;
 	C.print();
 
 	// Overload * operator - Matrix * Matrix
-	Matrix D {2,2}; 
-	D.set(A * B);
+	Matrix D=A * B;
 	D.print();
-
-	// Overload * oeration - Matrix * Vector
 }
