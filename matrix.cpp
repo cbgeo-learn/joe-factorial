@@ -59,7 +59,7 @@ Matrix Matrix::operator + (const Matrix &B)
 {
 	Matrix temp{rows_, cols_}; //Set it to size of A aribrarily
 
-	if ((rows_==B.Matrix::getrows()) && (cols_==B.Matrix::getcols())) //If A and B are same size
+	if ((rows_==B.getrows()) && (cols_==B.getcols())) //If A and B are same size
 	{
                	for (int rid=0; rid<rows_; ++rid)
 		{
@@ -75,9 +75,9 @@ Matrix Matrix::operator + (const Matrix &B)
 // Implement overload * operator
 Matrix Matrix::operator * (const Matrix &B)
 {
-	Matrix temp{rows_,B.Matrix::getcols()};
+	Matrix temp{rows_,B.getcols()};
 
-	if (cols_==B.Matrix::getrows())
+	if (cols_==B.getrows())
 	{
 		for (int rid=0; rid<rows_; ++rid)
 		{	
