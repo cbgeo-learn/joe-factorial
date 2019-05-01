@@ -15,7 +15,13 @@ Matrix::Matrix(int rows, int cols)
                 	vals_[rid][cid] = 0;
         }
 }	
-	
+
+// Implement getrows
+int Matrix::getcols() const {return cols_;}
+
+// Implement getcols
+int Matrix::getrows() const {return rows_;}
+
 // Allow user defined set, where will loop through values of Matrix
 void Matrix::setbyusr()
 {
@@ -53,7 +59,7 @@ Matrix Matrix::operator + (const Matrix &B)
 {
 	Matrix temp{rows_, cols_}; //Set it to size of A aribrarily
 
-	if ((rows_==B.getrows()) && (cols_==B.getcols())) //If A and B are same size
+	if ((rows_==B.Matrix::getrows()) && (cols_==B.Matrix::getcols())) //If A and B are same size
 	{
                	for (int rid=0; rid<rows_; ++rid)
 		{
@@ -69,9 +75,9 @@ Matrix Matrix::operator + (const Matrix &B)
 // Implement overload * operator
 Matrix Matrix::operator * (const Matrix &B)
 {
-	Matrix temp{rows_,B.getcols()};
+	Matrix temp{rows_,B.Matrix::getcols()};
 
-	if (cols_==B.getrows())
+	if (cols_==B.Matrix::getrows())
 	{
 		for (int rid=0; rid<rows_; ++rid)
 		{	

@@ -11,10 +11,10 @@ public:
 	void setbyusr();
 
 	// Getter for number of  rows
-	int getrows() const {return rows_;};
+	int getrows() const;
 
 	// Getter for number of  cols
-	int getcols() const {return cols_;};
+	int getcols() const;
 
 	// Print matrix for visualization	
 	void print();
