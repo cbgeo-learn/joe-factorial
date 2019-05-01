@@ -29,12 +29,6 @@ void Matrix::setbyusr()
 	}				
 }
 
-// Getter for number of rows
-//int Matrix::getrows() {return rows_;}
-
-// Getter for number of cols
-//int Matrix::getcols() {return cols_;}
-
 // Print Matrix for visualization	
 void Matrix::print()
 {
