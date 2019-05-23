@@ -1,15 +1,13 @@
 #include "book.h"
-#include <string>
-#include <iostream>
 
 // Constructor for book class
 Book::Book(
 	Genre genre,	
-	std::string isbn,
-	std::string title,
-	std::string author,
+	const std::string& isbn,
+	const std::string& title,
+	const std::string& author,
 	int copyrightdate,
-	bool checkedout)
+	bool checkedout) : title_{title}, author_{author}
 {
 	// Check isbn before assignment
 	bool pass=true;
@@ -34,35 +32,23 @@ Book::Book(
 		std::cout<<"ISBN is not valid, reverting to default "<<isbn_<<".\n";
 	}
 
-	genre_ = genre;
-	title_ = title;
-	author_ = author;
-	copyrightdate_ = copyrightdate;
-	checkedout_ = checkedout;
+	copyrightdate_=copyrightdate;
+	checkedout_=checkedout;
+
+	//Add map
+	std::map<Genre, std::string> genre_map;
+	genre_map.emplace(std::make_pair(FICTION, "Fiction"));
+	genre_map.emplace(std::make_pair(NONFICTION, "Nonfiction"));
+	genre_map.emplace(std::make_pair(PERIODICAL, "Periodical"));
+	genre_map.emplace(std::make_pair(BIOGRAPHY, "Biography"));
+	genre_map.emplace(std::make_pair(CHILDREN, "Children"));	
+	
+	//Assigne value to genre_
+	genre_=genre_map.at(genre);
 }
 
 // Return genre
-std::string Book::getgenre() const 
-{
-	switch (genre_)
-	{
-		case Book::FICTION:
-			return "Fiction";
-			break;
-		case Book::NONFICTION:
-			return "Nonfiction";
-			break;
-		case Book::PERIODICAL:
-			return "Periodical";
-			break;
-		case Book::BIOGRAPHY:
-			return "Biography";
-			break;
-		case Book::CHILDREN:
-			return "Children";
-			break;
-	}
-}
+std::string Book::getgenre() const {return genre_;}
 
 // Return isbn
 std::string Book::getisbn() const {return isbn_;}
@@ -86,7 +72,7 @@ void Book::checkin() {checkedout_=false;}
 void Book::checkout() {checkedout_=true;}
 
 // Overload == to compare isbn
-bool Book::operator == (const Book &Compare)
+bool Book::operator == (const Book& Compare)
 {
 	if (isbn_.compare(Compare.getisbn()) == 0)
 		return true;
@@ -95,7 +81,7 @@ bool Book::operator == (const Book &Compare)
 }
 
 // Overload != to compare isbn
-bool Book::operator != (const Book &Compare)
+bool Book::operator != (const Book& Compare)
 {
 	if (isbn_.compare(Compare.getisbn())==0)
 		return false;
