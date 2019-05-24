@@ -1,9 +1,10 @@
 #ifndef SHAPE_H
 #define SHAPE_H
-#include<Eigen/Dense>
 #include<string>
 #include<iostream>
 #include<cstdlib>
+
+#include "Eigen/Dense"
 
 class Shape
 {
