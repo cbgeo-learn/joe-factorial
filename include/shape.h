@@ -11,10 +11,7 @@ class Shape
 {
 public:
 	Shape(const std::string& fname);
-
-	double area();
-
-private:
+	Eigen::MatrixXd pts() const;
 	Eigen::MatrixXd pts_;	
 };
 #endif

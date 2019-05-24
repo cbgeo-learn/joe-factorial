@@ -1,6 +1,9 @@
 #include <iostream>
 #include <string>
 #include "shape.h"
+#include "triangle.h"
+#include "rectangle.h"
+
 
 int main(int argc, char **argv)
 {
@@ -13,17 +16,18 @@ int main(int argc, char **argv)
 	if (str == "triangle")
 	{
 		std::cout<<"Triangle"<<"\n";
-		Shape x=Shape(fname);
+		
+		Triangle tri = Triangle(fname);
+		std::cout<<tri.area()<<"\n";
+
 	}
 	else {if (str == "rectangle")
 	{	
 		std::cout<<"Rectangle"<<"\n";
-		Shape x=Shape(fname);
+		Rectangle rec = Rectangle(fname);
+		std::cout<<rec.area()<<"\n";
 	}
 	else
-	{
 		std::abort();
 	}
-	}
-	//std::cout<<"The shape's area is "<<m.area()<<"\n";
 }

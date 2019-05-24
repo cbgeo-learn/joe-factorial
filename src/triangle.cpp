@@ -1,11 +1,11 @@
-#include "rectangle.h"
+#include"triangle.h"
 
-Rectangle::Rectangle(const std::string &fname) : Shape(fname)
+Triangle::Triangle(const std::string& fname) : Shape(fname)
 {
-        std::cout<<"Constructor for Rectangle Sub-class"<<"\n";
+	std::cout<<"Constructor for Triangle Sub-class"<<"\n";
 }
 
-double Rectangle::area() const
+double Triangle::area() const
 {
     double area=0;
     int idn1=0;
@@ -18,4 +18,4 @@ double Rectangle::area() const
         area += (pts_(idn,0) * pts_(idn1,1) - pts_(idn,1) * pts_(idn1,0));
     }
     return 0.5*std::abs(area);
-}                                                
+}

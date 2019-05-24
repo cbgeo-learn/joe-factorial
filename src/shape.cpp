@@ -14,16 +14,16 @@ Shape::Shape(const std::string& fname)
     }
 
     const int maxline=256;
+    
+    //Number of coordiantes string
     char ncoord_s[maxline];
-
-    // int ncoord;
     file_stream.getline(ncoord_s, maxline);
-    //std::cout<<ncoord_s<<"\n";
 
+    //Number of coordiantes integer
     int ncoord_i;
     ncoord_i = atoi(ncoord_s);
-    //std::cout<<ncoord_i<<"\n";
     
+    //Loop through the csv file and save x and y coordinates to matrix
     char coord[maxline];
     pts_.resize(ncoord_i, 2);
     double value;
@@ -38,27 +38,6 @@ Shape::Shape(const std::string& fname)
 
     //Close file stream object
     file_stream.close();
-    
-    //Print pts_	
-    std::cout<<pts_<<"\n";
-}		
+}
 
-double Shape::area()
-{
-    double area=0;
-    int idn1=0;
-
-    std::cout<<pts_; //Compiles but doesnt print anything
-    std::cout<<pts_.rows(); //Says there are 0 Rows
-    std::cout<<pts_.cols(); //Says there are 0 Cols
-
-    //Loop along coordinates, until the penultimate row
-    for (int idn=0; idn<pts_.rows(); ++idn)
-    {   
-	idn1 = (idn==(pts_.rows()-1)) ? 0 : idn+1;
-	// (xn*yn+1 - yn*xn+1)
-        area += (pts_(idn,0) * pts_(idn1,1) - pts_(idn,1) * pts_(idn1,0));
-	std::cout<<area<<"\n";
-    }
-    return 0.5*std::abs(area);
-}	
+Eigen::MatrixXd Shape::pts() const {return pts_;}		
