@@ -3,16 +3,17 @@
 #include<string>
 #include<iostream>
 #include<cstdlib>
-
-#include "Eigen/Dense"
+#include<stdlib.h>
+#include<fstream>
+#include"Eigen/Dense"
 
 class Shape
 {
 public:
-	Shape(const int npts);
+	Shape(const std::string& fname);
 
 	double area();
-	
+
 private:
 	Eigen::MatrixXd pts_;	
 };

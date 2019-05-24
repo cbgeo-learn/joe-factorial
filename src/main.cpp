@@ -1,13 +1,29 @@
 #include <iostream>
+#include <string>
 #include "shape.h"
 
-int main()
+int main(int argc, char **argv)
 {
-	std::cout<<"Please enter the desired number of points: ";
-	int npts;
-	std::cin>>npts;
+	// Get string to determine shape type triangle or square
+	std::string str(argv[2]);
 
-	Shape m=Shape(npts);
+	// Get string for file name with points
+	std::string fname(argv[4]);
 	
-	std::cout<<"The shape's area is "<<m.area()<<"\n";
+	if (str == "triangle")
+	{
+		std::cout<<"Triangle"<<"\n";
+		Shape x=Shape(fname);
+	}
+	else {if (str == "rectangle")
+	{	
+		std::cout<<"Rectangle"<<"\n";
+		Shape x=Shape(fname);
+	}
+	else
+	{
+		std::abort();
+	}
+	}
+	//std::cout<<"The shape's area is "<<m.area()<<"\n";
 }

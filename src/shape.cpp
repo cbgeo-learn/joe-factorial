@@ -1,22 +1,46 @@
 #include"shape.h"
 
-Shape::Shape(int npts)
+Shape::Shape(const std::string& fname)
 {
-    //Store x and y coordiantes in a nptsx2 matrix of doubles
-    Eigen::MatrixXd pts_(npts,2);
-
-    //Assign coordinates
-    for (int row=0; row<npts; ++row)
+    //Open file (fname) to file stream object
+    std::ifstream file_stream;
+    file_stream.open(fname);
+    
+    //Check to be sure file was opened
+    if (!file_stream)
     {
-        for (int col=0; col<2; ++col)
-	{
-		std::cout<<"Please enter the ";
-		std::cout<<(col==0 ? "x" : "y");
-		std::cout<<" coordiante of the "<<row<<" point: ";
-		std::cin>>pts_(row,col);
-        }
+	std::cerr<<"Unable to open file "<<fname<<".\n";
+	std::abort();
     }
-    std::cout<<pts_; //Prints the matrix as it should
+
+    const int maxline=256;
+    char ncoord_s[maxline];
+
+    // int ncoord;
+    file_stream.getline(ncoord_s, maxline);
+    //std::cout<<ncoord_s<<"\n";
+
+    int ncoord_i;
+    ncoord_i = atoi(ncoord_s);
+    //std::cout<<ncoord_i<<"\n";
+    
+    char coord[maxline];
+    pts_.resize(ncoord_i, 2);
+    double value;
+    for(int row=0; row<ncoord_i; ++row)
+    {
+	for (int col=0; col<2; ++col)
+	{
+            file_stream.getline(coord, maxline);
+	    pts_(row,col) = atof(coord);
+	}
+    }
+
+    //Close file stream object
+    file_stream.close();
+    
+    //Print pts_	
+    std::cout<<pts_<<"\n";
 }		
 
 double Shape::area()
