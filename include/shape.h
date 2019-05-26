@@ -12,6 +12,7 @@ class Shape
 public:
 	Shape(const std::string& fname);
 	Eigen::MatrixXd pts() const;
+protected:
 	Eigen::MatrixXd pts_;	
 };
 #endif

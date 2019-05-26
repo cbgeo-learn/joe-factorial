@@ -18,6 +18,7 @@ int main(int argc, char **argv)
 		std::cout<<"Triangle"<<"\n";
 		
 		Triangle tri = Triangle(fname);
+		std::cout<<tri.pts()<<"\n";
 		std::cout<<tri.area()<<"\n";
 
 	}
@@ -25,6 +26,7 @@ int main(int argc, char **argv)
 	{	
 		std::cout<<"Rectangle"<<"\n";
 		Rectangle rec = Rectangle(fname);
+		std::cout<<rec.pts()<<"\n";
 		std::cout<<rec.area()<<"\n";
 	}
 	else

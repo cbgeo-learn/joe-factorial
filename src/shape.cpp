@@ -31,7 +31,7 @@ Shape::Shape(const std::string& fname)
     {
 	for (int col=0; col<2; ++col)
 	{
-            file_stream.getline(coord, maxline);
+            file_stream.getline(coord, maxline,',');
 	    pts_(row,col) = atof(coord);
 	}
     }
