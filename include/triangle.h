@@ -6,6 +6,6 @@ class Triangle : public Shape
 {
 public:
 	Triangle(const std::string& fname);
-	virtual double area() const override;
+	double area() const override;
 };
 #endif

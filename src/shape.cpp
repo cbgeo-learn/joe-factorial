@@ -9,9 +9,5 @@ Shape::Shape(const std::string& fname)
     
     //Loop through the csv file and save x and y coordinates to matrix
     while(in.read_row(x,y))
-	pts_.push_back(Eigen::Vector2d(x,y));	
+	pts_.emplace_back(Eigen::Vector2d(x,y));	
 }
-
-std::vector<Eigen::Vector2d> Shape::pts() const {return pts_;}	
-
-double Shape::area() const {}	 

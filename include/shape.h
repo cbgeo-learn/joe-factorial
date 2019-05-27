@@ -3,7 +3,6 @@
 #include<string>
 #include<iostream>
 #include<cstdlib>
-#include<iterator>
 #include"csv.h"
 #include"Eigen/Dense"
 
@@ -11,8 +10,7 @@ class Shape
 {
 public:
 	Shape(const std::string& fname);
-	std::vector<Eigen::Vector2d> pts() const;
-	virtual double area() const;
+	virtual double area() const =0;
 protected:
 	std::vector<Eigen::Vector2d> pts_;	
 };

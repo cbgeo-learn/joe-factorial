@@ -1,13 +1,8 @@
-#include <iostream>
-#include <string>
-#include "shape.h"
 #include "triangle.h"
 #include "rectangle.h"
 
-
 int main(int argc, char **argv)
 {
-	
 	if (argc!=3)
 	    std::abort();
 
@@ -23,14 +18,13 @@ int main(int argc, char **argv)
 		std::cout<<"Triangle"<<"\n";
 		shp = new Triangle(fname);
 	}
-	else {if (str == "rectangle")
+	else if (str == "rectangle")
 	{	
 		std::cout<<"Rectangle"<<"\n";
 		shp = new Rectangle(fname);
 	}
 	else
 		std::abort();
-	}
 	std::cout<<"Area = "<<shp->area()<<"\n";
 	delete shp;
 }
