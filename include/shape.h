@@ -3,16 +3,16 @@
 #include<string>
 #include<iostream>
 #include<cstdlib>
-#include<stdlib.h>
-#include<fstream>
+#include"csv.h"
 #include"Eigen/Dense"
 
 class Shape
 {
 public:
 	Shape(const std::string& fname);
-	Eigen::MatrixXd pts() const;
+	std::vector<Eigen::Vector2d> pts() const;
+	virtual double area() const;
 protected:
-	Eigen::MatrixXd pts_;	
+	std::vector<Eigen::Vector2d> pts_;	
 };
 #endif

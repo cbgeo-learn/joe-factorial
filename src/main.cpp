@@ -16,23 +16,22 @@ int main(int argc, char **argv)
 	
 	// Get string for file name with points
 	std::string fname(argv[2]);
-	
+
+	Shape *shp;	
 	if (str == "triangle")
 	{
 		std::cout<<"Triangle"<<"\n";
-		Triangle tri = Triangle(fname);
-		std::cout<<tri.pts()<<"\n";
-		std::cout<<tri.area()<<"\n";
-
+		shp = new Triangle(fname);
 	}
 	else {if (str == "rectangle")
 	{	
 		std::cout<<"Rectangle"<<"\n";
-		Rectangle rec = Rectangle(fname);
-		std::cout<<rec.pts()<<"\n";
-		std::cout<<rec.area()<<"\n";
+		shp = new Rectangle(fname);
 	}
 	else
 		std::abort();
 	}
+	//std::cout<<shp->pts()<<"\n";
+	std::cout<<shp->area()<<"\n";
+	delete shp;
 }

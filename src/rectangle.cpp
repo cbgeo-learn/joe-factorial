@@ -11,11 +11,11 @@ double Rectangle::area() const
     int idn1=0;
 
     //Loop along coordinates, until the penultimate row
-    for (int idn=0; idn<pts_.rows(); ++idn)
-    {
-        idn1 = (idn==(pts_.rows()-1)) ? 0 : idn+1;
+    //for (int idn=0; idn<pts_.rows(); ++idn)
+    //{
+    //    idn1 = (idn==(pts_.rows()-1)) ? 0 : idn+1;
         // (xn*yn+1 - yn*xn+1)
-        area += (pts_(idn,0) * pts_(idn1,1) - pts_(idn,1) * pts_(idn1,0));
-    }
+    //    area += (pts_(idn,0) * pts_(idn1,1) - pts_(idn,1) * pts_(idn1,0));
+    //}
     return 0.5*std::abs(area);
 }                                                

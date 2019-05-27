@@ -52,3 +52,4 @@ add_library(lshape SHARED ${shape_src} )
 
 add_executable(shape ${shape_SOURCE_DIR}/src/main.cpp)
 target_link_libraries(shape lshape)
+target_link_libraries(shape pthread)
