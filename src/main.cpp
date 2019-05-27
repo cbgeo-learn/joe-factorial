@@ -31,7 +31,6 @@ int main(int argc, char **argv)
 	else
 		std::abort();
 	}
-	//std::cout<<shp->pts()<<"\n";
-	std::cout<<shp->area()<<"\n";
+	std::cout<<"Area = "<<shp->area()<<"\n";
 	delete shp;
 }

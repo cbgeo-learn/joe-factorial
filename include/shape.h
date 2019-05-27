@@ -3,6 +3,7 @@
 #include<string>
 #include<iostream>
 #include<cstdlib>
+#include<iterator>
 #include"csv.h"
 #include"Eigen/Dense"
 

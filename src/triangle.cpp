@@ -8,16 +8,14 @@ Triangle::Triangle(const std::string& fname) : Shape(fname)
 double Triangle::area() const
 {
     double area=0;
-    int idn1=0;
+    std::vector<Eigen::Vector2d>::const_iterator it1;
 
-    //Loop along coordinates, until the penultimate row
+    //Loop along coordinates
     for (std::vector<Eigen::Vector2d>::const_iterator it=pts_.begin(); it!=pts_.end(); ++it)
     {
-	std::cout<<(*it)(0)<<","<<(*it)(1)<<"\n";
-	
-	//idn1 = (idn==(pts_.end-1)) ? 0 : idn+1;
+	it1 = (it==pts_.end()) ? pts_.begin() : std::next(it);
         // (xn*yn+1 - yn*xn+1)
-        //area += (pts_(idn,0) * pts_(idn1,1) - pts_(idn,1) * pts_(idn1,0));
+	area += ((*it)(0)) * ((*it1)(1)) - ((*it)(1)) * ((*it1)(0));
     }
     return 0.5*std::abs(area);
 }
