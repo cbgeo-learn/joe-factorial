@@ -12,19 +12,18 @@ int main(int argc, char **argv)
 	// Get string for file name with points
 	std::string fname(argv[2]);
 
-	Shape *shp;	
+	std::shared_ptr<Shape> shp;
 	if (str == "triangle")
 	{
 		std::cout<<"Triangle"<<"\n";
-		shp = new Triangle(fname);
+		shp = std::make_shared<Triangle>(fname);
 	}
 	else if (str == "rectangle")
 	{	
 		std::cout<<"Rectangle"<<"\n";
-		shp = new Rectangle(fname);
+		shp = std::make_shared<Rectangle>(fname);
 	}
 	else
 		std::abort();
 	std::cout<<"Area = "<<shp->area()<<"\n";
-	delete shp;
 }
