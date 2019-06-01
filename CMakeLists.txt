@@ -46,6 +46,7 @@ SET(shape_src
   ${shape_SOURCE_DIR}/src/shape.cpp
   ${shape_SOURCE_DIR}/src/triangle.cpp
   ${shape_SOURCE_DIR}/src/rectangle.cpp
+  ${shape_SOURCE_DIR}/src/shapefactory.cpp
 )
 
 add_library(lshape SHARED ${shape_src} )

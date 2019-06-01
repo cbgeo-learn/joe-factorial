@@ -1,29 +1,21 @@
-#include "triangle.h"
-#include "rectangle.h"
+#include "shapefactory.h"
+#include "shape.h"
 
 int main(int argc, char **argv)
 {
 	if (argc!=3)
 	    std::abort();
-
 	// Get string to determine shape type triangle or square
 	std::string str(argv[1]);
-	
 	// Get string for file name with points
 	std::string fname(argv[2]);
-
-	std::shared_ptr<Shape> shp;
-	if (str == "triangle")
-	{
-		std::cout<<"Triangle"<<"\n";
-		shp = std::make_shared<Triangle>(fname);
-	}
-	else if (str == "rectangle")
-	{	
-		std::cout<<"Rectangle"<<"\n";
-		shp = std::make_shared<Rectangle>(fname);
-	}
-	else
-		std::abort();
-	std::cout<<"Area = "<<shp->area()<<"\n";
+	// Create a pointer to an instance of a concrete factory
+	ShapeFactory* shape_factory=ShapeFactory::createFactory(str);
+	// Create a pointer to an instance of shape
+	Shape* shape=shape_factory->getshape(fname);
+	// Print the area of the initialized shape
+	std::cout<<"Area = "<<shape->area()<<"\n";
+	// Clean up
+	delete shape_factory;
+	delete shape;
 }
