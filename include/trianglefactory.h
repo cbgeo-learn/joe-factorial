@@ -7,8 +7,8 @@ public:
 	// Virtual destructor
 	virtual ~TriangleFactory(){}
 	// Return triangle shape
-	Shape* getshape(const std::string& fname){
-		return new Triangle(fname);
+	std::shared_ptr<Shape> getshape(const std::string& fname){
+		return std::make_shared<Triangle>(fname);
 	}
 };
 #endif

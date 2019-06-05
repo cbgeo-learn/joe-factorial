@@ -7,8 +7,8 @@ public:
 	// Virtual destructor
 	virtual ~RectangleFactory(){}
 	// Return pointer to shape 
-	Shape* getshape(const std::string& fname){
-		return new Rectangle(fname);
+	std::shared_ptr<Shape> getshape(const std::string& fname){
+		return std::make_shared<Rectangle>(fname);
 	}
 };
 #endif

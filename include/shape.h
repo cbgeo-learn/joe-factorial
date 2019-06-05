@@ -5,7 +5,7 @@
 #include<cstdlib>
 #include"csv.h"
 #include"Eigen/Dense"
-
+#include<memory>
 class Shape
 {
 public:

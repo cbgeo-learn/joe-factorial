@@ -2,17 +2,17 @@
 #include "trianglefactory.h"
 #include "rectanglefactory.h"
 
-ShapeFactory* ShapeFactory::createFactory(const std::string& str)
+std::shared_ptr<ShapeFactory> ShapeFactory::createFactory(const std::string& str)
 {
     if (str == "triangle")
     {
         std::cout<<"Triangle"<<"\n";
-        return new TriangleFactory;
+        return std::make_shared<TriangleFactory>();
     }
     else if (str == "rectangle")
     {
         std::cout<<"Rectangle"<<"\n";
-        return new RectangleFactory;
+        return std::make_shared<RectangleFactory>();
     }
     else
     {

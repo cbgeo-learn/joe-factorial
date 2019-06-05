@@ -9,8 +9,8 @@ public:
 	// Virtual destructor
 	virtual ~ShapeFactory(){};
 	// Virtual shape;
-	virtual Shape* getshape(const std::string& fname)=0;
+	virtual std::shared_ptr<Shape> getshape(const std::string& fname)=0;
 	// Create a pointer to the shape factory
-	static ShapeFactory* createFactory(const std::string& str);
+	static std::shared_ptr<ShapeFactory> createFactory(const std::string& str);
 };
 #endif
