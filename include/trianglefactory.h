@@ -8,7 +8,6 @@ public:
 	virtual ~TriangleFactory(){}
 	// Return triangle shape
 	std::shared_ptr<Shape> getshape(const std::string& fname){
-		return std::make_shared<Triangle>(fname);
-	}
+		return std::make_shared<Triangle>(fname);}
 };
 #endif

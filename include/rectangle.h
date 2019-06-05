@@ -7,5 +7,6 @@ class Rectangle : public Shape
 public:
 	Rectangle(const std::string& fname);
 	double area() const override;
+	double volume() const override;
 };
 #endif

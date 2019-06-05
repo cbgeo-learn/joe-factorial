@@ -9,9 +9,11 @@
 class Shape
 {
 public:
-	Shape(const std::string& fname);
+	Shape(const std::string& fname, const int dim);
 	virtual double area() const =0;
-protected:
-	std::vector<Eigen::Vector2d> pts_;	
+	virtual double volume() const =0;
+protected:	
+	std::vector<Eigen::Vector2d> pts_;
+	std::vector<Eigen::Vector3d> pts3_;
 };
 #endif

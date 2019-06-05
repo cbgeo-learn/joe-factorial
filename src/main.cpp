@@ -15,4 +15,6 @@ int main(int argc, char **argv)
 	std::shared_ptr<Shape> shape=shape_factory->getshape(fname);
 	// Print the area of the initialized shape
 	std::cout<<"Area = "<<shape->area()<<"\n";
+	// Print the volume of the initialized shape
+	std::cout<<"Volume = "<<shape->volume()<<"\n";
 }

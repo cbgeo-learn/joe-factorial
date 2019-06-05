@@ -2,6 +2,7 @@
 #define SHAPEFACTORY_H
 #include "rectangle.h"
 #include "triangle.h"
+#include "tet.h"
 
 class ShapeFactory
 {

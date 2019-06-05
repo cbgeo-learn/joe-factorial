@@ -7,5 +7,6 @@ class Triangle : public Shape
 public:
 	Triangle(const std::string& fname);
 	double area() const override;
+	double volume() const override;
 };
 #endif

@@ -1,22 +1,24 @@
 #include "shapefactory.h"
 #include "trianglefactory.h"
 #include "rectanglefactory.h"
-
+#include "tetfactory.h"
+#include <map>
 std::shared_ptr<ShapeFactory> ShapeFactory::createFactory(const std::string& str)
 {
-    if (str == "triangle")
-    {
-        std::cout<<"Triangle"<<"\n";
-        return std::make_shared<TriangleFactory>();
+    //Map
+    std::map<std::string, std::shared_ptr<ShapeFactory>> shape_map;
+    shape_map.emplace(std::make_pair("triangle", std::make_shared<TriangleFactory>()));
+    shape_map.emplace(std::make_pair("rectangle", std::make_shared<RectangleFactory>()));
+    shape_map.emplace(std::make_pair("tetrahedron", std::make_shared<TetFactory>()));
+
+    //Try to index, if not throw meaningful error and abort
+    try
+    {	
+    	return shape_map.at(str);
     }
-    else if (str == "rectangle")
+    catch (const std::out_of_range& e)
     {
-        std::cout<<"Rectangle"<<"\n";
-        return std::make_shared<RectangleFactory>();
-    }
-    else
-    {
-	std::cerr<<"Entry "<<str<<" not recognized use triangle or rectangle"<<"\n";
-        std::abort();
-    }
+	std::cerr<<"Entry of shape "<<str<<" not recognized use triangle, rectangle, or tetrahedron.\n";
+	std::abort();
+    } 
 }
