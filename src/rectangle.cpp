@@ -1,6 +1,6 @@
 #include "rectangle.h"
 
-Rectangle::Rectangle(const std::string &fname) : Shape(fname, 2)
+Rectangle::Rectangle(const std::string &fname, const std::string &dim) : Shape(fname, dim)
 {
         std::cout<<"Constructor for Rectangle Sub-class\n";
 }

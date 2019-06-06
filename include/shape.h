@@ -9,7 +9,7 @@
 class Shape
 {
 public:
-	Shape(const std::string& fname, const int dim);
+	Shape(const std::string& fname, const std::string& dim);
 	virtual double area() const =0;
 	virtual double volume() const =0;
 protected:	

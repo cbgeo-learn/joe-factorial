@@ -7,7 +7,7 @@ public:
 	// Virtual destructor
 	virtual ~TetFactory(){}
 	// Return pointer to concrete factory
-	std::shared_ptr<Shape> getshape(const std::string& fname){
-		return std::make_shared<Tetrahedron>(fname);}
+	std::shared_ptr<Shape> getshape(const std::string& fname, const std::string& dim){
+		return std::make_shared<Tetrahedron>(fname, dim);}
 };
 #endif

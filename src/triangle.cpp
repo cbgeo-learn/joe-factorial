@@ -1,6 +1,6 @@
 #include"triangle.h"
 
-Triangle::Triangle(const std::string& fname) : Shape(fname, 2)
+Triangle::Triangle(const std::string& fname, const std::string& dim) : Shape(fname, dim)
 {
 	std::cout<<"Constructor for Triangle Sub-class"<<"\n";
 }

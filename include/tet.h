@@ -5,7 +5,7 @@
 class Tetrahedron : public Shape
 {
 public:
-	Tetrahedron(const std::string& fname);
+	Tetrahedron(const std::string& fname, const std::string& dim);
 	double area() const override;
 	double volume() const override;
 };

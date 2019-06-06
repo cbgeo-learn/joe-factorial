@@ -1,6 +1,6 @@
 #include "tet.h"
 
-Tetrahedron::Tetrahedron(const std::string& fname) : Shape(fname, 3)
+Tetrahedron::Tetrahedron(const std::string& fname, const std::string& dim) : Shape(fname, dim)
 {
 	std::cout<<"Constuctor for Tetrahedron sub-class."<<"\n";
 }
