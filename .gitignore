@@ -1,3 +1,5 @@
 #FilestoIgnore
 *.out
 build/*
+*~*
+*#*
