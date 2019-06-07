@@ -1,5 +1,3 @@
-#include"shape.h"
-
 template<const int Tdim>
 Shape<Tdim>::Shape(const std::string& fname)
 {

@@ -17,4 +17,5 @@ public:
 protected:	
 	std::vector< Eigen::Matrix<double, Tdim, 1> > pts_;
 };
+#include "shape.tcc"
 #endif

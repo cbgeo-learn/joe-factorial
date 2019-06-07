@@ -43,7 +43,6 @@ include_directories(BEFORE
 
 # shape executable
 SET(shape_src
-  ${shape_SOURCE_DIR}/src/shape.cpp
   ${shape_SOURCE_DIR}/src/triangle.cpp
   ${shape_SOURCE_DIR}/src/rectangle.cpp
   ${shape_SOURCE_DIR}/src/shapefactory.cpp
