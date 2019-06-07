@@ -1,17 +1,20 @@
 #include "tet.h"
 
-Tetrahedron::Tetrahedron(const std::string& fname, const std::string& dim) : Shape(fname, dim)
+template <const int Tdim>
+Tetrahedron<Tdim>::Tetrahedron(const std::string& fname) : Shape<Tdim>(fname)
 {
 	std::cout<<"Constuctor for Tetrahedron sub-class."<<"\n";
 }
 
-double Tetrahedron::area() const
+template <const int Tdim>
+double Tetrahedron<Tdim>::area() const
 {
 	std::cout<<"Area of a Tetrahedron is undefined, returning 0."<<"\n";
 	return 0;
 }
 
-double Tetrahedron::volume() const
+template <const int Tdim>
+double Tetrahedron<Tdim>::volume() const
 {
 	// Place-holder
 	std::cout<<"Volume calculation occurs ..."<<"\n";

@@ -2,10 +2,11 @@
 #define RECTANGLE_H
 #include "shape.h"
 
-class Rectangle : public Shape
+template <const int Tdim>
+class Rectangle : public Shape<Tdim>
 {
 public:
-	Rectangle(const std::string& fname, const std::string& dim);
+	Rectangle(const std::string& fname);
 	double area() const override;
 	double volume() const override;
 };

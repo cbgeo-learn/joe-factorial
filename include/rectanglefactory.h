@@ -1,14 +1,14 @@
 #ifndef RECTANGLEFACTORY_H
 #define RECTANGLEFACTORY_H
 #include "shapefactory.h"
-class RectangleFactory : public ShapeFactory
+template <const int Tdim>
+class RectangleFactory : public ShapeFactory<Tdim>
 {
 public:
-	// Virtual destructor
-	virtual ~RectangleFactory(){}
 	// Return pointer to shape 
-	std::shared_ptr<Shape> getshape(const std::string& fname, const std::string& dim){
-		return std::make_shared<Rectangle>(fname, dim);
+	std::shared_ptr< Shape<Tdim> > getshape(const std::string& fname)
+	{
+		return std::make_shared< Rectangle<Tdim> >(fname);
 	}
 };
 #endif

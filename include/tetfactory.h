@@ -1,13 +1,14 @@
 #ifndef TETFACTORY_H
 #define TETFACTORY_H
 #include "shapefactory.h"
-class TetFactory : public ShapeFactory
+template <const int Tdim>
+class TetFactory : public ShapeFactory<Tdim>
 {
 public:
-	// Virtual destructor
-	virtual ~TetFactory(){}
 	// Return pointer to concrete factory
-	std::shared_ptr<Shape> getshape(const std::string& fname, const std::string& dim){
-		return std::make_shared<Tetrahedron>(fname, dim);}
+	std::shared_ptr< Shape<Tdim> > getshape(const std::string& fname)
+	{
+		return std::make_shared< Tetrahedron<Tdim> >(fname);
+	}
 };
 #endif

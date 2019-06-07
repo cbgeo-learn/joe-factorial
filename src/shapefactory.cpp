@@ -3,13 +3,14 @@
 #include "rectanglefactory.h"
 #include "tetfactory.h"
 #include <map>
-std::shared_ptr<ShapeFactory> ShapeFactory::createFactory(const std::string& str)
+template <const int Tdim>
+std::shared_ptr< ShapeFactory<Tdim> > ShapeFactory<Tdim>::createFactory(const std::string& str)
 {
     //Map
-    std::map<std::string, std::shared_ptr<ShapeFactory>> shape_map;
-    shape_map.emplace(std::make_pair("triangle", std::make_shared<TriangleFactory>()));
-    shape_map.emplace(std::make_pair("rectangle", std::make_shared<RectangleFactory>()));
-    shape_map.emplace(std::make_pair("tetrahedron", std::make_shared<TetFactory>()));
+    std::map<std::string, std::shared_ptr< ShapeFactory<Tdim> > > shape_map;
+    shape_map.emplace(std::make_pair("triangle", std::make_shared< TriangleFactory<Tdim> >()));
+    shape_map.emplace(std::make_pair("rectangle", std::make_shared< RectangleFactory<Tdim> >()));
+    shape_map.emplace(std::make_pair("tetrahedron", std::make_shared< TetFactory<Tdim> >()));
 
     //Try to index, if not throw meaningful error and abort
     try

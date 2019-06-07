@@ -6,14 +6,15 @@
 #include"csv.h"
 #include"Eigen/Dense"
 #include<memory>
+
+template <const int Tdim>
 class Shape
 {
 public:
-	Shape(const std::string& fname, const std::string& dim);
+	Shape(const std::string& fname);
 	virtual double area() const =0;
 	virtual double volume() const =0;
 protected:	
-	std::vector<Eigen::Vector2d> pts_;
-	std::vector<Eigen::Vector3d> pts3_;
+	std::vector< Eigen::Matrix<double, Tdim, 1> > pts_;
 };
 #endif

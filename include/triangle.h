@@ -2,10 +2,11 @@
 #define TRIANGLE
 #include"shape.h"
 
-class Triangle : public Shape
+template <const int Tdim>
+class Triangle : public Shape<Tdim>
 {
 public:
-	Triangle(const std::string& fname, const std::string& dim);
+	Triangle(const std::string& fname);
 	double area() const override;
 	double volume() const override;
 };
