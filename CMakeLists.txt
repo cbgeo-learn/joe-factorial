@@ -41,5 +41,5 @@ include_directories(BEFORE
   ${shape_SOURCE_DIR}/include/
 )
 
-add_executable(shape ${shape_SOURCE_DIR}/src/main.cpp)
+add_executable(shape ${shape_SOURCE_DIR}/src/main.cpp ${shape_SOURCE_DIR}/src/shapes.cc)
 target_link_libraries(shape pthread)
