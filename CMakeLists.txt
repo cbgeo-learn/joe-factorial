@@ -41,5 +41,12 @@ include_directories(BEFORE
   ${shape_SOURCE_DIR}/include/
 )
 
-add_executable(shape ${shape_SOURCE_DIR}/src/main.cpp ${shape_SOURCE_DIR}/src/shapes.cc)
+# shapes executable
+SET(shapes_src
+  ${shape_SOURCE_DIR}/src/shapes.cc
+)
+add_library(lshapes SHARED ${shapes_src})
+
+add_executable(shape ${shape_SOURCE_DIR}/src/main.cpp )
 target_link_libraries(shape pthread)
+target_link_libraries(shape lshapes)

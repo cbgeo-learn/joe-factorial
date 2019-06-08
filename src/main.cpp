@@ -4,9 +4,8 @@
 #include "factory.h"
 #include "shape.h"
 
-int main(int argc, char **argv) {
-  if (argc != 4)
-    std::abort();
+int main(int argc, char** argv) {
+  if (argc != 4) std::abort();
   // Get dimension number
   // const int dim = std::atoi(argv[1]);
   const int dim = 2;
