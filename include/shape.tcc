@@ -18,7 +18,7 @@ Shape<3>::Shape(const std::string& fname) {
   double y;
   double z;
 
-  // Loop through the csv file and save x and y coordinates to matrix
+  // Loop through the csv file and save x, y, and z coordinates to matrix
   while (in.read_row(x, y, z))
     pts_.emplace_back(Eigen::Matrix<double, 3, 1>(x, y, z));
 }

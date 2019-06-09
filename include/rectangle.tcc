@@ -1,9 +1,9 @@
-template <const int Tdim>
+template <int Tdim>
 Rectangle<Tdim>::Rectangle(const std::string& fname) : Shape<Tdim>(fname) {
   std::cout << "Constructor for Rectangle Sub-class\n";
 }
 
-template <const int Tdim>
+template <int Tdim>
 double Rectangle<Tdim>::area() const {
   double area = 0;
   std::vector<Eigen::Matrix<double, 2, 1> >::const_iterator it1;
@@ -16,7 +16,7 @@ double Rectangle<Tdim>::area() const {
   return 0.5 * std::abs(area);
 }
 
-template <const int Tdim>
+template <int Tdim>
 double Rectangle<Tdim>::volume() const {
   std::cout << "Volume of a rectangle is undefined. Returning 0.\n";
   return 0;

@@ -17,14 +17,12 @@ class TriangleFactory;
 template <int Tdim>
 class TetFactory;
 
-template <int Tdim>
 class ShapeFactory {
  public:
-  // Virtual shape;
-  virtual std::shared_ptr<Shape<Tdim>> getshape(const std::string& fname) = 0;
   // Create a pointer to the shape factory
-  static std::shared_ptr<ShapeFactory<Tdim>> createFactory(
-      const std::string& str);
+  static std::shared_ptr<ShapeFactory> create_factory(const std::string& str, const int dim);
+  // Virtual shape;
+  virtual std::shared_ptr<ShapeHead> getshape(const std::string& fname) = 0;
 };
 
 #include "shapefactory.tcc"
