@@ -5,11 +5,10 @@
 #include "shapefactory.h"
 
 template <int Tdim>
-class RectangleFactory : public ShapeFactory<Tdim> {
+class RectangleFactory : public ShapeFactory {
  public:
-  RectangleFactory() = default;
   // Return pointer to shape
-  std::shared_ptr<Shape<Tdim>> getshape(const std::string& fname) {
+  std::shared_ptr<ShapeHead> getshape(const std::string& fname) {
     return std::make_shared<Rectangle<Tdim>>(fname);
   }
 };

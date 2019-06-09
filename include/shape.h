@@ -1,14 +1,18 @@
 #ifndef SHAPE_H
 #define SHAPE_H
-#include "Eigen/Dense"
-#include "csv.h"
+
 #include <cstdlib>
 #include <iostream>
 #include <memory>
 #include <string>
 
+#include "csv.h"
+#include "Eigen/Dense"
+#include "shapehead.h"
+
 template <int Tdim>
-class Shape {
+class Shape : public ShapeHead
+{
  public:
   Shape(const std::string& fname);
   virtual double area() const = 0;
