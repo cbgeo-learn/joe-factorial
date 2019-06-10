@@ -4,8 +4,9 @@
 #include "tet.h"
 #include "triangle.h"
 
-// Rectangle
-static Register<Shape<2>, Triangle<2>, const std::string&> triangle("Triangle");
+// Triangle
+static Register<Shape<2>, Triangle<2>, const std::string&> triangle(
+    "Triangle");
 
 // Rectangle
 static Register<Shape<2>, Rectangle<2>, const std::string&> rectangle(
