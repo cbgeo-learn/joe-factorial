@@ -14,7 +14,7 @@ int main(int argc, char** argv) {
   // Get string for file name with points
   std::string fname(argv[3]);
   // Create a pointer to an instance of shape
-  auto shape = Factory<ShapeHead>::instance()->create(fname);
+  auto shape = Factory<ShapeHead, const std::string&>::instance()->create(str, fname);
   // Print the area of the initialized shape
   std::cout << "Area = " << shape->area() << "\n";
   // Print the volume of the initialized shape

@@ -6,12 +6,12 @@
 
 // Triangle
 static Register<ShapeHead, Triangle<2>, const std::string&> triangle(
-    "triangle.txt");
+    "triangle");
 
 // Rectangle
 static Register<ShapeHead, Rectangle<2>, const std::string&> rectangle(
-    "rectangle.txt");
+    "rectangle");
 
 // Tet
 static Register<ShapeHead, Tetrahedron<3>, const std::string&> tet(
-    "tetrahedron.txt");
+    "tetrahedron");
