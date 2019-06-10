@@ -6,9 +6,10 @@
 #include <iostream>
 #include <memory>
 #include <string>
+#include "shapehead.h"
 
 template <int Tdim>
-class Shape {
+class Shape : public ShapeHead {
  public:
   Shape(const std::string& fname);
   virtual double area() const = 0;

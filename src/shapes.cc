@@ -1,17 +1,17 @@
 #include "factory.h"
 #include "rectangle.h"
-#include "shape.h"
+#include "shapehead.h"
 #include "tet.h"
 #include "triangle.h"
 
 // Triangle
-static Register<Shape<2>, Triangle<2>, const std::string&> triangle(
-    "Triangle");
+static Register<ShapeHead, Triangle<2>, const std::string&> triangle(
+    "triangle.txt");
 
 // Rectangle
-static Register<Shape<2>, Rectangle<2>, const std::string&> rectangle(
-    "Rectangle");
+static Register<ShapeHead, Rectangle<2>, const std::string&> rectangle(
+    "rectangle.txt");
 
 // Tet
-static Register<Shape<3>, Tetrahedron<3>, const std::string&> tet(
-    "Tetrahedron");
+static Register<ShapeHead, Tetrahedron<3>, const std::string&> tet(
+    "tetrahedron.txt");

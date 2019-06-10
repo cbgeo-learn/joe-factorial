@@ -7,6 +7,8 @@
 #include <string>
 #include <vector>
 
+#include <iostream>
+
 //! \brief Singleton factory implementation
 //! \tparam Tbaseclass Base class
 //! \tparam Targs variadic template arguments
@@ -34,7 +36,7 @@ class Factory {
   std::shared_ptr<Tbaseclass> create(const std::string& key, Targs&&... args) {
     if (!this->check(key))
       throw std::runtime_error("Invalid key: " + key +
-                               ", not found in the factory register!");
+                               ", blah blah not found in the factory register!");
     return registry.at(key)->create(std::forward<Targs>(args)...);
   }
 
@@ -44,7 +46,11 @@ class Factory {
   bool check(const std::string& key) const {
     bool status = false;
     for (const auto& keyvalue : registry)
-      if (keyvalue.first == key) status = true;
+    {      
+	std::cout<<keyvalue.first<<"\t";
+	if (keyvalue.first == key) status = true;
+	std::cout<<status<<"\n";
+    }
     return status;
   }
 
@@ -87,4 +93,4 @@ class Register {
   }
 };
 
-#endif  // _FACTORY_H_
+#endif
